@@ -222,7 +222,6 @@ public class BLEActivity extends BaseActivity implements View.OnClickListener, I
     }
 
 
-
     @Override
     public void onFoundDevice(BluetoothDevice device) {
         mSrlLayout.finishRefresh();
@@ -268,12 +267,16 @@ public class BLEActivity extends BaseActivity implements View.OnClickListener, I
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+                if (mBluetoothDevice != null) {
+                    BluetoothLeManager.getInstance().close(mBluetoothDevice.getAddress());
+                }
                 mBluetoothDevice = (BluetoothDevice) mAdapter.get(position);
                 if (!TextUtils.isEmpty(mSetPin))
                     mBluetoothDevice.setPin(mSetPin.getBytes());
                 mBaseBluetoothDeal.setMac(mBluetoothDevice.getAddress());
                 BluetoothCallbackDeal.getInstance().addIBluetoothDeal(mBaseBluetoothDeal);
                 BluetoothLeManager.getInstance().connectBluetooth(mBluetoothDevice);
+
             }
         }, "去填写", null);
     }
@@ -362,5 +365,10 @@ public class BLEActivity extends BaseActivity implements View.OnClickListener, I
         }
     };
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        BluetoothCallbackDeal.getInstance().removeIBluetoothDeal(mBaseBluetoothDeal);
+        mBaseBluetoothDeal = null;
+    }
 }
