@@ -34,7 +34,6 @@ import java.util.concurrent.Executors;
  */
 public class SppManage {
     ExecutorService mSingleThreadExecutor = Executors.newSingleThreadExecutor();
-    private static Object obj = new Object();
     private int mState;
     private static SppManage INSTANCE = null;
     private BluetoothDevice mDevice;
@@ -46,7 +45,7 @@ public class SppManage {
     String mMac;
     String mName;
 
-    public SppManage() {
+    private SppManage() {
     }
 
     /**
@@ -56,7 +55,7 @@ public class SppManage {
      */
     public static SppManage getInstance() {
         if (INSTANCE == null) {
-            synchronized (obj) {
+            synchronized (SppManage.class) {
                 if (INSTANCE == null) {
                     INSTANCE = new SppManage();
                 }
@@ -255,7 +254,7 @@ public class SppManage {
             mConnectedTask.cancel();
             mConnectedTask = null;
         }
-        setState(IConnectStateListener.SERVICE_DISCONNECTED);
+//        setState(IConnectStateListener.SERVICE_DISCONNECTED);
     }
 
     public boolean write(byte[] data) {

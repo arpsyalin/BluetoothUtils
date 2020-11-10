@@ -41,7 +41,6 @@ import static android.bluetooth.BluetoothDevice.TRANSPORT_LE;
  */
 public class BluetoothLeManager implements IBluetoothOperation, BluetoothAdapter.LeScanCallback {
     private static final int AUTO_STOP_SCAN = 5000;
-    private static Object obj = new Object();
     //蓝牙状态保存，可以通过保存状态，进行设备连接数量管理
     private Map<String, Integer> mBluetoothGattStatusMap = new ConcurrentHashMap();
     //连接
@@ -49,9 +48,9 @@ public class BluetoothLeManager implements IBluetoothOperation, BluetoothAdapter
     private Vector<IConnectStateListener> mConnectStateListeners = new Vector<>();
     Vector<IScanBluetoothListener> mIScanBluetoothListeners = new Vector<>();
     BluetoothGattCallback mBluetoothGattResponse;
-    private static BluetoothLeManager INSTANCE = null;
+    private static volatile BluetoothLeManager INSTANCE = null;
 
-    public BluetoothLeManager() {
+    private BluetoothLeManager() {
         /**
          * 设置默认mBluetoothGattResponse
          */
@@ -65,7 +64,7 @@ public class BluetoothLeManager implements IBluetoothOperation, BluetoothAdapter
      */
     public static BluetoothLeManager getInstance() {
         if (INSTANCE == null) {
-            synchronized (obj) {
+            synchronized (BluetoothLeManager.class) {
                 if (INSTANCE == null) {
                     INSTANCE = new BluetoothLeManager();
                 }

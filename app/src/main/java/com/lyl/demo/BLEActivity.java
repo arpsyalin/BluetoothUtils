@@ -98,6 +98,7 @@ public class BLEActivity extends BaseActivity implements View.OnClickListener, I
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_b_l_e);
+        setTitle("BLE");
         initView();
         initAdapter();
         BluetoothLeManager.getInstance().addIScanBluetoothListeners(this);
@@ -368,6 +369,7 @@ public class BLEActivity extends BaseActivity implements View.OnClickListener, I
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        BluetoothLeManager.getInstance().closeAll();
         BluetoothCallbackDeal.getInstance().removeIBluetoothDeal(mBaseBluetoothDeal);
         mBaseBluetoothDeal = null;
     }

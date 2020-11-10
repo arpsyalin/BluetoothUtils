@@ -108,6 +108,7 @@ public class SPPActivity extends BaseActivity implements View.OnClickListener, O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_p_p);
+        setTitle("SPP");
         initView();
         SppManage.getInstance().setConnectCallback(this);
         SppManage.getInstance().setDataCallback(this);
@@ -128,6 +129,7 @@ public class SPPActivity extends BaseActivity implements View.OnClickListener, O
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        SppManage.getInstance().stop();
         SppManage.getInstance().setConnectCallback(null);
         SppManage.getInstance().setDataCallback(null);
         unregisterReceiver(mFoundReceiver);
@@ -323,4 +325,5 @@ public class SPPActivity extends BaseActivity implements View.OnClickListener, O
     public void writeData() {
         showShort("发送写入成功");
     }
+
 }
