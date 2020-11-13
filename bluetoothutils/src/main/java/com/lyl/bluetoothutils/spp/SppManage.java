@@ -70,7 +70,7 @@ public class SppManage {
         mConnectCallback = connectCallback;
     }
 
-    public void setmUUID(java.util.UUID mUUID) {
+    public void setUUID(java.util.UUID mUUID) {
         this.mUUID = mUUID;
     }
 
