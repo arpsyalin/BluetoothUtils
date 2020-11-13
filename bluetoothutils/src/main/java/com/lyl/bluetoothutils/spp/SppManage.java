@@ -41,7 +41,9 @@ public class SppManage {
     ConnectedTask mConnectedTask;
     IConnectStateListener mConnectCallback;
     DataCallBack mDataCallBack;
-    private static final UUID DEFAULT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+
+    private static final UUID DEFAULT_UUID = UUID.fromString(CONSTANT_UUID.DEFAULT);
+    private UUID mUUID = null;
     String mMac;
     String mName;
 
@@ -68,6 +70,10 @@ public class SppManage {
         mConnectCallback = connectCallback;
     }
 
+    public void setmUUID(java.util.UUID mUUID) {
+        this.mUUID = mUUID;
+    }
+
     public void setDataCallback(DataCallBack dataCallback) {
         mDataCallBack = dataCallback;
     }
@@ -81,7 +87,7 @@ public class SppManage {
 
         public ConnectTask(BluetoothDevice device) {
             try {
-                mmSocket = device.createRfcommSocketToServiceRecord(DEFAULT_UUID);
+                mmSocket = device.createRfcommSocketToServiceRecord(mUUID == null ? DEFAULT_UUID : mUUID);
             } catch (IOException e) {
                 e.printStackTrace();
                 setState(IConnectStateListener.SERVICE_DISCONNECTED);
