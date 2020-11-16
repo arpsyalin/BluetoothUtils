@@ -229,12 +229,20 @@ public class BLEActivity extends BaseActivity implements View.OnClickListener, I
         if (!mAdapter.contains(device)) {
             String filterName = mEdtInputFilterName.getText().toString();
             String filterAddress = mEdtInputFilterAddress.getText().toString();
-            if (device.getName() != null && device.getAddress() != null && device.getName().toUpperCase().contains(filterName.toUpperCase()) && device.getAddress().toUpperCase().contains(filterAddress.toUpperCase())) {
-                List<BluetoothDevice> devices = new ArrayList<>();
-                devices.add(device);
-                mAdapter.insert(devices);
+            if (TextUtils.isEmpty(device.getName()) && !TextUtils.isEmpty(device.getAddress()) && device.getAddress().toUpperCase().contains(filterAddress.toUpperCase())) {
+                addDevice(device);
+            }
+
+            if (!TextUtils.isEmpty(device.getName()) && !TextUtils.isEmpty(device.getAddress()) && device.getName().toUpperCase().contains(filterName.toUpperCase()) && device.getAddress().toUpperCase().contains(filterAddress.toUpperCase())) {
+                addDevice(device);
             }
         }
+    }
+
+    public void addDevice(BluetoothDevice device) {
+        List<BluetoothDevice> devices = new ArrayList<>();
+        devices.add(device);
+        mAdapter.insert(devices);
     }
 
     @Override
