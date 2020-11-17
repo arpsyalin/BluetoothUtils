@@ -13,5 +13,6 @@ import android.bluetooth.BluetoothDevice;
  */
 public interface IScanBluetoothListener {
     void onFoundDevice(BluetoothDevice device);
+
     void onScanStop();
 }

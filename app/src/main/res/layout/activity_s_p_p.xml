@@ -1,171 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:orientation="horizontal"
-    tools:context=".SPPActivity">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorPrimary"
+              android:orientation="horizontal"
+              tools:context=".SPPActivity">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/colorAccent"
-        android:orientation="vertical">
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:orientation="vertical">
 
         <EditText
-            android:id="@+id/edt_input_filter_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:hint="输入过滤MAC属性只有包含的时候才会搜索到"
-            android:textColor="#ffffff"
-            android:textSize="12dp" />
+                android:id="@+id/edt_input_filter_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:hint="输入过滤MAC属性只有包含的时候才会搜索到"
+                android:textColor="#ffffff"
+                android:textSize="12dp"/>
 
         <EditText
-            android:id="@+id/edt_input_filter_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:hint="输入过滤名称属性只有包含的时候才会搜索到"
-            android:textColor="#ffffff"
-            android:textSize="12dp" />
+                android:id="@+id/edt_input_filter_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:hint="输入过滤名称属性只有包含的时候才会搜索到"
+                android:textColor="#ffffff"
+                android:textSize="12dp"/>
 
 
         <EditText
-            android:id="@+id/edt_input_pin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:hint="输入Pin"
-            android:textColor="#ffffff"
-            android:textSize="12dp" />
+                android:id="@+id/edt_input_pin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:hint="输入Pin"
+                android:textColor="#ffffff"
+                android:textSize="12dp"/>
 
 
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
-            android:id="@+id/srl_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tv_modular_name">
+                android:id="@+id/srl_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tv_modular_name">
 
             <com.scwang.smart.refresh.header.ClassicsHeader
-                android:id="@+id/mh_head"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                    android:id="@+id/mh_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                    android:id="@+id/rv_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
         </com.scwang.smart.refresh.layout.SmartRefreshLayout>
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="#999999"
-        android:orientation="vertical">
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#999999"
+            android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="当前连接设备信息："
-                android:textColor="#ffffff"
-                android:textSize="12dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="当前连接设备信息："
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"/>
 
             <Button
-                android:id="@+id/btn_disconnect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="0dp"
-                android:text="断开连接" />
+                    android:id="@+id/btn_disconnect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="0dp"
+                    android:text="断开连接"/>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_deviceInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textColor="#ffffff"
-            android:textSize="12dp" />
+                android:id="@+id/tv_deviceInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="#ffffff"
+                android:textSize="12dp"/>
 
         <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/rb_16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="16进制" />
+                    android:id="@+id/rb_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="16进制"/>
 
             <RadioButton
-                android:id="@+id/rb_no16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="非16进制" />
+                    android:id="@+id/rb_no16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="非16进制"/>
         </RadioGroup>
 
         <EditText
-            android:id="@+id/edt_sendCom"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="left"
-            android:hint="输入需要发送的命令"
-            android:text=""
-            android:textSize="12dp" />
+                android:id="@+id/edt_sendCom"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="left"
+                android:hint="输入需要发送的命令"
+                android:text=""
+                android:textSize="12dp"/>
 
         <Button
-            android:id="@+id/btn_send"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="发送" />
+                android:id="@+id/btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发送"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="接收到的命令"
-                android:textColor="#ffffff"
-                android:textSize="12dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="接收到的命令"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"/>
 
             <Button
-                android:id="@+id/btn_clear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="清除接收区" />
+                    android:id="@+id/btn_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="清除接收区"/>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/log_textview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="false"
-            android:enabled="true"
-            android:scrollbars="vertical"
-            android:text=""
-            android:textColor="@android:color/white"
-            android:textSize="10dp" />
+                android:id="@+id/log_textview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:enabled="true"
+                android:scrollbars="vertical"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="10dp"/>
 
     </LinearLayout>
 </LinearLayout>

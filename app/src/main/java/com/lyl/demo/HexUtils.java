@@ -25,9 +25,13 @@ public class HexUtils {
             return null;
         }
         byte[] result = new byte[str.length() / 2];
-        for (int i = 0; i < str.length(); ) {
-            result[i / 2] = new BigInteger(str.substring(i, i + 2), 16).byteValue();
-            i += 2;
+        try {
+            for (int i = 0; i < str.length(); ) {
+                result[i / 2] = new BigInteger(str.substring(i, i + 2), 16).byteValue();
+                i += 2;
+            }
+        } catch (Exception e) {
+            result = null;
         }
         return result;
     }

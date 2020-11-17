@@ -31,6 +31,8 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -228,7 +230,13 @@ public class SPPActivity extends BaseActivity implements View.OnClickListener, O
                         showShort("您的输入有误！请重试");
                     }
                 } else {
-                    if (SppManage.getInstance().write(cmd.getBytes())) {
+                    byte[] b = null;
+
+//                        cmd = cmd.replace("\n", "\r\n");
+                    //若接收端必须接受ANCI编码采用GBK将默认的Unicode转ANCI
+//                        b = cmd.getBytes("GBK");
+                    b = cmd.getBytes();
+                    if (SppManage.getInstance().write(b)) {
                         showShort("已经写入");
                     } else {
                         showShort("未连接写入失败");

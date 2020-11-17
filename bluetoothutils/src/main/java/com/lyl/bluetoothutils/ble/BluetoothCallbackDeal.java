@@ -23,7 +23,7 @@ import java.util.Vector;
  */
 public class BluetoothCallbackDeal extends BluetoothGattCallback {
     Vector<IBluetoothDeal> mIBluetoothDeals;
-     private static volatile BluetoothCallbackDeal INSTANCE = null;
+    private static volatile BluetoothCallbackDeal INSTANCE = null;
 
     public static BluetoothCallbackDeal getInstance() {
         if (INSTANCE == null) {
