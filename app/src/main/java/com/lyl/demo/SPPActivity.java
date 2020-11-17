@@ -114,18 +114,17 @@ public class SPPActivity extends BaseActivity implements View.OnClickListener, O
         initView();
         SppManage.getInstance().setConnectCallback(this);
         SppManage.getInstance().setDataCallback(this);
-        initAdapter();
 
         IntentFilter filter = new IntentFilter();//开启搜索
         filter.addAction(BluetoothDevice.ACTION_FOUND);
         filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
         registerReceiver(mFoundReceiver, filter);
+        initAdapter();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        startDiscovery();
     }
 
     @Override
@@ -139,6 +138,7 @@ public class SPPActivity extends BaseActivity implements View.OnClickListener, O
     }
 
     private void startDiscovery() {
+        stopDiscovery();
         if (!BluetoothAdapter.getDefaultAdapter().isDiscovering()) {
             BluetoothAdapter.getDefaultAdapter().startDiscovery();
         }
@@ -148,7 +148,6 @@ public class SPPActivity extends BaseActivity implements View.OnClickListener, O
         if (BluetoothAdapter.getDefaultAdapter().isDiscovering()) {
             BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
         }
-        BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
     }
 
     @Override
@@ -300,10 +299,7 @@ public class SPPActivity extends BaseActivity implements View.OnClickListener, O
     @Override
     public void onRefresh(@NonNull RefreshLayout refreshLayout) {
         mAdapter.refresh(new ArrayList());
-//        BluetoothLeManager.getInstance().startScanBluetooth(true);
-        if (!BluetoothAdapter.getDefaultAdapter().isDiscovering()) {
-            BluetoothAdapter.getDefaultAdapter().startDiscovery();
-        }
+        startDiscovery();
 
     }
 
